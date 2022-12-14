@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class userController extends Controller
+class clientController extends Controller
 {
     //
     public function create() {
-        return view('users.create');
+        return view('clients.create');
     }
 
     public function store(Request $request) {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
-            'email' => ['required', 'email', Rule::unique('users' , 'email')],
+            'email' => ['required', 'email', Rule::unique('clients' , 'email')],
             'password' => 'required|confirmed|min:6'
         ]);
 
         $formFields['password'] = bcrypt($formFields['password']);
 
-        $user = User::create($formFields);
+        $client = Client::create($formFields);
 
-        auth()->login($user);
+        auth()->login($client);
         return redirect('/')->with('message', 'user created succssesfully');
 
     }
@@ -39,7 +39,7 @@ class userController extends Controller
     }
 
     public function login() {
-        return view('users.login');
+        return view('clients.login');
     }
 
     public function authenticate(request $request) {

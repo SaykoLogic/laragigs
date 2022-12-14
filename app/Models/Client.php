@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Client extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -19,8 +19,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'location',
         'email',
-        'password',
+
     ];
 
     /**
@@ -42,7 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function listings() {
-        return $this->hasMany(listing::class, 'user_id');
+    public function ejras() {
+        return $this->hasMany(ejra::class, 'user_id');
     }
 }

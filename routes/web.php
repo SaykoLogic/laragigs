@@ -3,8 +3,8 @@
 use App\Models\listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\userController;
-use App\Http\Controllers\listingController;
+use App\Http\Controllers\ejraController;
+use App\Http\Controllers\clientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,29 +25,29 @@ use App\Http\Controllers\listingController;
 // update - update listing
 // destroy - delete listing
 
-Route::get('/', [listingController::class ,'index'] );
+Route::get('/', [ejraController::class ,'index'] );
 
-Route::get('/listings/create', [listingController::class ,'create'] )->middleware('auth') ;
+Route::get('/ejras/create', [ejraController::class ,'create'] );
 
-Route::post('/listings' , [listingController::class , 'store'] );
+Route::post('/ejras' , [ejraController::class , 'store'] );
 
-Route::get('/listings/{listing}/edit', [listingController::class ,'edit'] )->middleware('auth') ;
+Route::get('/ejras/{ejra}/edit' , [ejraController::class ,'edit'] );
 
-Route::put('/listings/{listing}' , [listingController::class, 'update'] )->middleware('auth') ;
+Route::put('/ejras/{ejra}' , [ejraController::class, 'update'] );
 
-Route::delete('/listings/{listing}' , [listingController::class, 'destroy'] )->middleware('auth') ;
+Route::delete('/ejras/{ejra}' , [ejraController::class, 'destroy'] );
 
-Route::get('/listings/{listing}' , [listingController::class, 'show'] );
+Route::get('/ejras/{ejra}' , [ejraController::class, 'show'] );
 
-Route::get('/users/create' , [userController::class, 'create'] )->middleware('guest') ;
+Route::get('/clients/create' , [clientController::class, 'create'] );
 
-Route::post('/users' , [userController::class, 'store'] )->middleware('guest') ;
+Route::post('/clients' , [clientController::class, 'store'] );
 
-Route::get('/logout' , [userController::class, 'logout'] )->middleware('auth') ;
+Route::get('/logout' , [clientController::class, 'logout'] );
 
-Route::get('/login' , [userController::class, 'login'] )->name('login')->middleware('guest') ;
+Route::get('/login' , [clientController::class, 'login'] )->name('login');
 
-Route::post('/users/authenticate' , [userController::class, 'authenticate'] );
+Route::post('/clients/authenticate' , [clientController::class, 'authenticate'] );
 
 
 

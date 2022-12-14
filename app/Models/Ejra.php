@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class listing extends Model
+class ejra extends Model
 {
     use HasFactory;
     //protected $fillable = ['titile', 'company', 'tags', 'description', 'location', 'website', 'email'];
@@ -17,15 +17,15 @@ class listing extends Model
         }
 
         if($filters['search'] ?? false) {
-        $query->where('title', 'like', '%' . request('search') . '%' )
-                ->orwhere('description', 'like' , '%' . request('search') . '%')
-                ->orwhere('tags', 'like', '%' . request('search') . '%' )
+        $query->where('e_name', 'like', '%' . request('search') . '%' )
+                ->orwhere('details', 'like' , '%' . request('search') . '%')
+                ->orwhere('s_tags', 'like', '%' . request('search') . '%' )
         ;}
     }
 
-    public function user() {
-        return $this->belongsTo(user::class, 'user_id');
-        }
+    // public function user() {
+    //     return $this->belongsTo(user::class, 'user_id');
+    //     }
 
 
 }

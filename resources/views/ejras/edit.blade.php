@@ -2,28 +2,32 @@
     <x-card class="p-10 max-w-lg mx-auto mt-24">
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-1">
-                Create a Gig
+                Edit a Gig
             </h2>
-            <p class="mb-4">Post a gig to find a developer</p>
+            <p class="mb-4">edit: {{ $ejra->title }}</p>
         </header>
-        <form method="post" action="/listings" enctype="multipart/form-data">
+        <form method="post" action="/listings/{{ $ejra->id }}" enctype="multipart/form-data">
             @csrf
-            <div class="mb-6">
-                <label for="company" class="inline-block text-lg mb-2">Company Name</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="company" />
+            @method('PUT')
 
-                @error('company')
+            <div class="mb-6">
+                <label for="e_name" class="inline-block text-lg mb-2">اسم الاجراء</label>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="e_name" />
+
+                @error('e_name')
                     <p class="text-red-500 text-xs mt-1"> {{ $message }} </p>
                 @enderror
 
             </div>
 
             <div class="mb-6">
-                <label for="title" class="inline-block text-lg mb-2">Job Title</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="title"
-                    placeholder="Example: Senior Laravel Developer" />
+                <label for="docs" class="inline-block text-lg mb-2">
+                    المستندات المطلوبة
+                </label>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="docs"
+                    placeholder="Example: Laravel, Backend, Postgres, etc" />
 
-                @error('title')
+                @error('tags')
                     <p class="text-red-500 text-xs mt-1">
                         {{ $message }} </p>
                 @enderror
@@ -31,37 +35,27 @@
             </div>
 
             <div class="mb-6">
-                <label for="location" class="inline-block text-lg mb-2">Job Location</label>
+                <label for="tags" class="inline-block text-lg mb-2">
+                    كلمات مفتاحية
+                </label>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="tags"
+                    placeholder="Example: Laravel, Backend, Postgres, etc" />
+
+                @error('tags')
+                    <p class="text-red-500 text-xs mt-1">
+                        {{ $message }} </p>
+                @enderror
+
+            </div>
+
+            <div class="mb-6">
+                <label for="location" class="inline-block text-lg mb-2">مكان الاجراء</label>
                 <input type="text" class="border border-gray-200 rounded p-2 w-full" name="location"
                     placeholder="Example: Remote, Boston MA, etc" />
 
                 @error('location')
                     <p class="text-red-500 text-xs
                 mt-1"> {{ $message }} </p>
-                @enderror
-
-            </div>
-
-            <div class="mb-6">
-                <label for="email" class="inline-block text-lg mb-2">Contact Email</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="email" />
-
-                @error('email')
-                    <p class="text-red-500 text-xs mt-1">
-                        {{ $message }} </p>
-                @enderror
-
-            </div>
-
-            <div class="mb-6">
-                <label for="website" class="inline-block text-lg mb-2">
-                    Website/Application URL
-                </label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="website" />
-
-                @error('website')
-                    <p class="text-red-500 text-xs
-        mt-1"> {{ $message }} </p>
                 @enderror
 
             </div>
@@ -80,14 +74,6 @@
 
             </div>
 
-            <div>
-                <label for="logo" class="inline-block text-lg mb-2"> logo </label>
-                <input type="file" name="logo" class="border border-gray-200 rounded p-2 w-full" />
-
-                @error('logo')
-                    <p class="text-red-500 text-xs mt-1"> {{ $message }} </p>
-                @enderror
-            </div>
 
             <div class="mb-6">
                 <label for="description" class="inline-block text-lg mb-2">
@@ -105,7 +91,7 @@
 
             <div class="mb-6">
                 <button class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">
-                    Create Gig
+                    Submit changes
                 </button>
 
                 <a href="/" class="text-black ml-4"> Back </a>
