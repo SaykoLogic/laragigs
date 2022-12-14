@@ -3,16 +3,19 @@
         style="background-image: url('images/laravel-logo.png')"></div>
 
     <div class="z-10">
-        <h1 class="text-4xl font-bold uppercase text-white">
+        <h1 class="text-4xl font-bold uppercase text-white md:text-4xl">
             Ejraie <span class="text-black">إجرائي</span>
         </h1>
-        <p class="text-2xl text-gray-200 font-bold my-4">
+        <p class="text-2xl text-gray-200 font-bold my-4 md:text-4xl lg:text-6xl">
             جد اجرائك الان!
         </p>
-        <div>
-            <a href="#"
-                class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black">
-                سجل لرفع الاجراءات</a>
+        @auth
+        @else
+            <div>
+                <a href="#"
+                    class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black md:text-6xl lg:text-4xl">
+                    سجل لرفع الاجراءات</a>
+            </div>
         </div>
-    </div>
+    @endauth
 </section>

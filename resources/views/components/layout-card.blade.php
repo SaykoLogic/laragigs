@@ -14,8 +14,10 @@
         tailwind.config = {
             theme: {
                 screens: {
-                    sm: "320px",
-                    md: "375px",
+                    sm: '320px',
+                    sl: '370px',
+                    md: '768px',
+                    lg: '1200px',
 
                 },
                 extend: {
@@ -34,15 +36,15 @@
 <body class="mb-48">
     <nav class="flex justify-between items-center mb-4">
         <a href="/"><img class="w-24" src="{{ asset('images/_logo.png') }}" alt="" class="logo" /></a>
-        <ul class="flex space-x-6 mr-6 text-lg sm:space-x-1">
+        <ul class="flex  space-x-2 mr-2 text-lg md:text-2xl">
             @auth
                 <li>
-                    <a href="#" class="hover:text-laravel">| <i class="fa-solid fa-gear"></i> مشاركاتي
+                    <a href="#" class="hover:text-laravel">|مشاركاتي <i class="fa-solid fa-gear"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="/logout" class="hover:text-laravel"><i class="fa-solid fa-door-closed"></i>
-                        تسجيل خروج</a>
+                    <a href="/logout" class="hover:text-laravel">تسجيل خروج <i class="fa-solid fa-door-closed"></i>
+                    </a>
                 </li>
             @else
                 <li>
@@ -65,7 +67,8 @@
         class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center">
         <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
 
-        <a href="/ejras/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">ساعد غيرك</a>
+        <a href="/ejras/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">ساعد
+            غيرك</a>
     </footer>
 </body>
 
